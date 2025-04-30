@@ -487,58 +487,63 @@
 
 
 
-<h1 id="zero-trust-network-architecture-overview">🛡️ Zero Trust Network Architecture Overview</h1>
+<h1 id="zero-trust-network-architecture-overview">🛡️ Zero Trust Network Architecture Overview<a class="headerlink" href="#zero-trust-network-architecture-overview" title="Permanent link">&para;</a></h1>
 <p>This document outlines key components of a Zero Trust network design using Markdown extensions to enhance readability and interactivity.</p>
 <hr />
-<h2 id="identity-access-management-iam">🔐 Identity &amp; Access Management (IAM)</h2>
-<p>!!! tip "Use Role-Based Access Control (RBAC)"
-    RBAC helps minimize over-permissioning and aligns with the principle of least privilege.</p>
-<p>=== "AWS Example"</p>
-<pre><code>```yaml
-Statement:
-  - Effect: Allow
-    Action: ec2:DescribeInstances
-    Resource: "*"
-```
-</code></pre>
-<p>=== "Azure Example"</p>
-<pre><code>```json
-{
-  "RoleDefinitionName": "Reader",
-  "Actions": [ "Microsoft.Compute/virtualMachines/read" ]
-}
-```
-</code></pre>
+<h2 id="identity-access-management-iam">🔐 Identity &amp; Access Management (IAM)<a class="headerlink" href="#identity-access-management-iam" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Use Role-Based Access Control (RBAC)</p>
+<p>RBAC helps minimize over-permissioning and aligns with the principle of least privilege.</p>
+</div>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">AWS Example</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nt">Statement</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">    </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ec2:DescribeInstances</span>
+<span class="w">    </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Azure Example</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;RoleDefinitionName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reader&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;Microsoft.Compute/virtualMachines/read&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
 <hr />
-<h2 id="network-segmentation">🌐 Network Segmentation</h2>
-<pre><code class="language-bash"># Firewall rule to allow SSH from a bastion host
-iptables -A INPUT -s 10.0.0.5 -p tcp --dport 22 -j ACCEPT
-</code></pre>
-<p>!!! warning "Avoid opening SSH to the public internet"
-    Exposing port 22 to <code>0.0.0.0/0</code> introduces serious risk. Always scope access narrowly.</p>
-<p>??? example "Show example NGINX configuration"</p>
-<pre><code>```nginx
-server {
-    listen 443 ssl;
-    ssl_certificate /etc/nginx/cert.pem;
-    ssl_certificate_key /etc/nginx/key.pem;
-}
-```
-</code></pre>
+<h2 id="network-segmentation">🌐 Network Segmentation<a class="headerlink" href="#network-segmentation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Firewall rule to allow SSH from a bastion host</span>
+iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.0.0.5<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">22</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Avoid opening SSH to the public internet</p>
+<p>Exposing port 22 to <code>0.0.0.0/0</code> introduces serious risk. Always scope access narrowly.</p>
+</div>
+<details class="example">
+<summary>Show example NGINX configuration</summary>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/cert.pem</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/key.pem</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 <hr />
-<h2 id="monitoring-logging">🧭 Monitoring &amp; Logging</h2>
+<h2 id="monitoring-logging">🧭 Monitoring &amp; Logging<a class="headerlink" href="#monitoring-logging" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Centralized logs</li>
 <li>Alerts for unauthorized access</li>
 <li>SIEM integration (e.g., Splunk, Sentinel)</li>
 </ul>
-<pre><code class="language-bash"># Example: send logs to remote syslog
-logger -n 10.1.1.10 -P 514 &quot;Unauthorized login attempt&quot;
-</code></pre>
-<p>!!! note
-    Logs should be immutable and retained according to compliance requirements.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example: send logs to remote syslog</span>
+logger<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>.1.1.10<span class="w"> </span>-P<span class="w"> </span><span class="m">514</span><span class="w"> </span><span class="s2">&quot;Unauthorized login attempt&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Logs should be immutable and retained according to compliance requirements.</p>
+</div>
 <hr />
-<h2 id="summary">✅ Summary</h2>
+<h2 id="summary">✅ Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use tabs to document platform-specific commands</li>
 <li>Collapse long configs using details blocks</li>

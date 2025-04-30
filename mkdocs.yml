@@ -8,11 +8,17 @@ theme:
     - navigation.sections
     - search.suggest
     - content.code.copy
-
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.details
+  - toc:
+      permalink: true
 nav:
   - Home: index.md
   - Getting Started: full-extension-demo.md
   - Architecture Diagrams: architecture-diagrams.md
-
 extra_javascript:
   - https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js
