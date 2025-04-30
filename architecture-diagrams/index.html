@@ -449,9 +449,9 @@
 
 
 
-<h1 id="it-security-architecture-diagram-mermaid">🧭 IT Security Architecture Diagram (Mermaid)</h1>
+<h1 id="it-security-architecture-diagram-mermaid">🧭 IT Security Architecture Diagram (Mermaid)<a class="headerlink" href="#it-security-architecture-diagram-mermaid" title="Permanent link">&para;</a></h1>
 <p>Below is a basic security architecture using a <strong>Mermaid diagram</strong>, rendered automatically in MkDocs Material.</p>
-<pre><code class="language-mermaid">graph TD
+<div class="highlight"><pre><span></span><code>graph TD
     User[User Device]
     Auth[Authentication Provider]
     FW[Firewall]
@@ -464,10 +464,10 @@
     FW --&gt; Proxy
     Proxy --&gt; App
     App --&gt; DB
-</code></pre>
+</code></pre></div>
 <hr />
-<h2 id="data-flow-diagram-zero-trust">🔄 Data Flow Diagram (Zero Trust)</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<h2 id="data-flow-diagram-zero-trust">🔄 Data Flow Diagram (Zero Trust)<a class="headerlink" href="#data-flow-diagram-zero-trust" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>sequenceDiagram
     participant User
     participant IdP
     participant Gateway
@@ -479,11 +479,13 @@
     Gateway-&gt;&gt;App: Forward if token valid
     App--&gt;&gt;Gateway: Response
     Gateway--&gt;&gt;User: Return data
-</code></pre>
+</code></pre></div>
 <hr />
-<h2 id="notes">📌 Notes</h2>
-<p>!!! tip
-    Diagrams are <strong>just Markdown</strong> — no external tooling required. You can document and visualize directly in your docs.</p>
+<h2 id="notes">📌 Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Diagrams are <strong>just Markdown</strong> — no external tooling required. You can document and visualize directly in your docs.</p>
+</div>
 
 
 
