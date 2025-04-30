@@ -3,6 +3,14 @@
 Below is a basic security architecture using a **Mermaid diagram**, rendered automatically in MkDocs Material.
 
 ```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
+
+```mermaid
 graph TD
     User[User Device]
     Auth[Authentication Provider]
