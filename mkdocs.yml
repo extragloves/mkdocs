@@ -1,0 +1,8 @@
+site_name: My Docs
+theme:
+  name: material  # optional, nicer UI
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Getting Started: getting-started.md
