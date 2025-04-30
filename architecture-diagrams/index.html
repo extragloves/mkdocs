@@ -451,7 +451,12 @@
 
 <h1 id="it-security-architecture-diagram-mermaid">🧭 IT Security Architecture Diagram (Mermaid)<a class="headerlink" href="#it-security-architecture-diagram-mermaid" title="Permanent link">&para;</a></h1>
 <p>Below is a basic security architecture using a <strong>Mermaid diagram</strong>, rendered automatically in MkDocs Material.</p>
-<div class="highlight"><pre><span></span><code>graph TD
+<pre class="mermaid"><code>  graph TD;
+      A--&gt;B;
+      A--&gt;C;
+      B--&gt;D;
+      C--&gt;D;</code></pre>
+<pre class="mermaid"><code>graph TD
     User[User Device]
     Auth[Authentication Provider]
     FW[Firewall]
@@ -463,11 +468,10 @@
     Auth --&gt;|Token| FW
     FW --&gt; Proxy
     Proxy --&gt; App
-    App --&gt; DB
-</code></pre></div>
+    App --&gt; DB</code></pre>
 <hr />
 <h2 id="data-flow-diagram-zero-trust">🔄 Data Flow Diagram (Zero Trust)<a class="headerlink" href="#data-flow-diagram-zero-trust" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant User
     participant IdP
     participant Gateway
@@ -478,8 +482,7 @@
     User-&gt;&gt;Gateway: Request with Token
     Gateway-&gt;&gt;App: Forward if token valid
     App--&gt;&gt;Gateway: Response
-    Gateway--&gt;&gt;User: Return data
-</code></pre></div>
+    Gateway--&gt;&gt;User: Return data</code></pre>
 <hr />
 <h2 id="notes">📌 Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
