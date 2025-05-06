@@ -3,7 +3,7 @@ site_name: My Docs
 theme:
   name: material
   palette:
-    scheme: default
+    scheme: slate
   features:
     - navigation.tabs
     - navigation.sections

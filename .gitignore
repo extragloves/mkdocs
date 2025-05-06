@@ -1,1 +1,10 @@
+# Virtual environment
+# Ignore virtual environment directories
 venv/
+.venv/
+
+
+# MkDocs build directory
+# Ignore the default build directory for MkDocs
+site/
+
