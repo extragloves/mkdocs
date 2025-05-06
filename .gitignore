@@ -5,4 +5,4 @@ venv/
 # MkDocs build directory
 # Ignore the default build directory for MkDocs
 site/
-site/404.html
+
